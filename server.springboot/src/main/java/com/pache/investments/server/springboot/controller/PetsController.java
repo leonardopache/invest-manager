@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import com.pache.investments.server.springboot.repository.PetsRepository;
 /**
  * @author lpache
  */
+@ControllerAdvice
 @RestController
 @RequestMapping("/pets")
 public class PetsController {
