@@ -1,0 +1,125 @@
+db.createCollection('users');
+db.users.insertOne({
+		"_id" : "",
+		"name" : "Leonardo",
+		"username" : "lpache",
+		"password" : "" /*welcome1*/
+	});
+
+db.createCollection('resourceAllocation');
+db.resourceAllocation.insertMany([
+	{
+		"_id" : "",
+		"name" : "Agressive",
+		"user_id" : ""
+	}
+]);
+
+db.createCollection('resourceType');
+db.resourceType.insertMany([
+	{
+		"_id" : "",
+		"name" : "Fixed liquidity"
+	},
+	{
+		"_id" : "",
+		"name" : "Fixed long"
+	},
+	{
+		"_id" : "",
+		"name" : "Funds"
+	}
+]);
+
+db.createCollection('resourceAllocationType');
+db.resourceAllocationType.insertMany([
+	{
+		"resourceType_id" : "",
+		"resourceAllocation_id" : "",
+		"percent" : "0.25"
+	},
+	{
+		"resourceType_id" : "",
+		"resourceAllocation_id" : "",
+		"percent" : "0.15"
+	},
+	{
+		"resourceType_id" : "",
+		"resourceAllocation_id" : "",
+		"percent" : "0.6"
+	}
+]);
+
+
+
+db.createCollection('index');
+db.index.insertMany([
+	{
+		"_id" : "",
+		"name" : "Tesouro Selic 2023",
+		"code" : "",
+		"resourceType_id" : ""
+	},
+	{
+		"_id" : "",
+		"name" : "Tesouro Prefixado 2025",
+		"code" : "",
+		"resourceType_id" : ""
+	},
+	{
+		"_id" : "",
+		"name" : "Alaska Black Institucional FIA",
+		"code" : "",
+		"resourceType_id" : ""
+	},
+	{
+		"_id" : "",
+		"name" : "Trend Ibovespa FIA",
+		"code" : "",
+		"resourceType_id" : ""
+	}
+]);
+
+db.createCollection('investments');
+db.investments.insertMany([
+	{
+		"_id" : "",
+		"amountInvested" : "1161.78",
+		"amountActual" : "1179.09",
+		"beginDate" : "03/09/2018",
+		"endDate" : "01/03/2023",
+		"user_id" : "",
+		"resourceType_id" : ""
+		"index_id" : "SELIC"
+	},
+	{
+		"_id" : "",
+		"amountInvested" : " 1453,66",
+		"amountActual" : "1473,86",
+		"beginDate" : "10/09/2018",
+		"endDate" : "01/03/2023",
+		"user_id" : "",
+		"resourceType_id" : ""
+		"index_id" : "SELIC"
+	},
+	{
+		"_id" : "",
+		"amountInvested" : "1195,25",
+		"amountActual" : "1409,48",
+		"beginDate" : "03/09/2018",
+		"endDate" : "01/01/2025",
+		"user_id" : "",
+		"resourceType_id" : ""
+		"index_id" : "IPCA"
+	},
+	{
+		"_id" : "",
+		"amountInvested" : "1498,37",
+		"amountActual" : "1751,86",
+		"beginDate" : "10/09/2018",
+		"endDate" : "01/01/2025",
+		"user_id" : "",
+		"resourceType_id" : ""
+		"index_id" : "IPCA"
+	}
+]);
