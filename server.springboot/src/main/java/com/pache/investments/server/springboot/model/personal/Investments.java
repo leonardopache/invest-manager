@@ -4,12 +4,12 @@
 package com.pache.investments.server.springboot.model.personal;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import com.pache.investments.server.springboot.model.financemarket.Index;
 import com.pache.investments.server.springboot.model.financemarket.ResourceType;
 
 /**
@@ -23,11 +23,14 @@ public class Investments {
 	private String name;
 	private BigDecimal amountInvested;
 	private BigDecimal amountActual;
-	private LocalDate beginDate;
-	private LocalDate endDate;
-	private Users user;
+	private LocalDateTime beginDate;
+	private LocalDateTime endDate;
+	@DBRef
+	private User user;
+	@DBRef
 	private ResourceType resourceType;
-	private Index index;
+	private String indexId;
+	private String indexName;
 
 	public String get_id() {
 		return _id.toHexString();
@@ -61,27 +64,27 @@ public class Investments {
 		this.amountActual = amountActual;
 	}
 
-	public LocalDate getBeginDate() {
+	public LocalDateTime getBeginDate() {
 		return beginDate;
 	}
 
-	public void setBeginDate(LocalDate beginDate) {
+	public void setBeginDate(LocalDateTime beginDate) {
 		this.beginDate = beginDate;
 	}
 
-	public LocalDate getEndDate() {
+	public LocalDateTime getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(LocalDate endDate) {
+	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
 
-	public Users getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
@@ -93,12 +96,20 @@ public class Investments {
 		this.resourceType = resourceType;
 	}
 
-	public Index getIndex() {
-		return index;
+	public String getIndexId() {
+		return indexId;
 	}
 
-	public void setIndex(Index index) {
-		this.index = index;
+	public void setIndexId(String indexId) {
+		this.indexId = indexId;
+	}
+
+	public String getIndexName() {
+		return indexName;
+	}
+
+	public void setIndexName(String indexName) {
+		this.indexName = indexName;
 	}
 
 }

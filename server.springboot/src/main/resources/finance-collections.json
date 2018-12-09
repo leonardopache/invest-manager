@@ -1,123 +1,175 @@
 db.createCollection('users');
-db.users.insertOne({
-		"_id" : "1",
-		"name" : "Leonardo",
-		"username" : "lpache",
-		"password" : "" /*welcome1*/
-	});
-
 db.createCollection('resourceAllocation');
+db.createCollection('resourceType');
+db.createCollection('resourceAllocationType');
+db.createCollection('index');
+db.createCollection('investments');
+
+db.users.insertOne({
+	"_id": ObjectId("5c0a848f26a78ac2962f3f1f"),
+	"name": "Leonardo",
+	"username": "lpache",
+	"password": "$2a$10$AjHGc4x3Nez/p4ZpvFDWeO6FGxee/cVqj5KHHnHfuLnIOzC5ag4fm"/*welcome1*/
+});
+
 db.resourceAllocation.insertMany([
 	{
-		"_id" : "2",
-		"name" : "Agressive",
-		"user_id" : "1"
+	    "_id" : ObjectId("5c0c3396eefbaf17290dc5ba"),
+	    "name" : "Agressive",
+	    "user" : {
+	        "$ref" : "users",
+	        "$id" : ObjectId("5c0a848f26a78ac2962f3f1f")
+	    },
+        "allocationTypeList": null
 	}
 ]);
 
-db.createCollection('resourceType');
 db.resourceType.insertMany([
 	{
-		"_id" : "3",
+		"_id" : ObjectId("5c0a854726a78ac2962f3f21"),
 		"name" : "Fixed liquidity"
 	},
 	{
-		"_id" : "4",
+		"_id" : ObjectId("5c0a854726a78ac2962f3f22"),
 		"name" : "Fixed long"
 	},
 	{
-		"_id" : "5",
+		"_id" : ObjectId("5c0a854726a78ac2962f3f23"),
 		"name" : "Funds"
 	}
 ]);
 
-db.createCollection('resourceAllocationType');
 db.resourceAllocationType.insertMany([
 	{
-		"resourceType_id" : "3",
-		"resourceAllocation_id" : "2",
+		"resourceType" : {
+	        "$ref" : "resourceType",
+	        "$id" : ObjectId("5c0a854726a78ac2962f3f21")
+	    },
+		"resourceAllocation" : {
+			"$ref" : "resourceAllocation",	
+			"$id" : ObjectId("5c0a84f426a78ac2962f3f20")
+		},
 		"percent" : "0.25"
 	},
 	{
-		"resourceType_id" : "4",
-		"resourceAllocation_id" : "2",
+		"resourceType" : {
+	        "$ref" : "resourceType",
+	        "$id" : ObjectId("5c0a854726a78ac2962f3f22")
+	    },
+		"resourceAllocation" : {
+			"$ref" : "resourceAllocation",
+			"$id" : ObjectId("5c0a84f426a78ac2962f3f20")
+		},
 		"percent" : "0.15"
 	},
 	{
-		"resourceType_id" : "5",
-		"resourceAllocation_id" : "2",
+		"resourceType" : {
+	        "$ref" : "resourceType",
+	        "$id" : ObjectId("5c0a854726a78ac2962f3f23")
+	    },
+		"resourceAllocation" : {
+			"$ref" : "resourceAllocation",
+			"$id" : ObjectId("5c0a84f426a78ac2962f3f20")
+		},
 		"percent" : "0.6"
 	}
 ]);
 
-db.createCollection('index');
 db.index.insertMany([
 	{
-		"_id" : "6",
+		"_id" : ObjectId("5c0a85c726a78ac2962f3f27"),
 		"name" : "Tesouro Selic 2023",
 		"code" : "",
-		"resourceType_id" : "3"
+		"resourceTypeId" : "5c0a854726a78ac2962f3f21"
 	},
 	{
-		"_id" : "7",
-		"name" : "Tesouro Prefixado 2025",
+		"_id" : ObjectId("5c0a85c726a78ac2962f3f28"),
+		"name" : "",
 		"code" : "",
-		"resourceType_id" : "4"
+		"resourceTypeId" : "5c0a854726a78ac2962f3f22"
 	},
 	{
-		"_id" : "8",
+		"_id" : ObjectId("5c0a85c726a78ac2962f3f29"),
 		"name" : "Alaska Black Institucional FIA",
 		"code" : "",
-		"resourceType_id" : "5"
+		"resourceTypeId" : "5c0a854726a78ac2962f3f23"
 	},
 	{
-		"_id" : "9",
+		"_id" : ObjectId("5c0a85c726a78ac2962f3f2a"),
 		"name" : "Trend Ibovespa FIA",
 		"code" : "",
-		"resourceType_id" : "5"
+		"resourceTypeId" : "5c0a854726a78ac2962f3f23"
 	}
 ]);
 
-db.createCollection('investments');
+
 db.investments.insertMany([
 	{
-		"_id" : "",
-		"amountInvested" : "1161.78",
-		"amountActual" : "1179.09",
-		"beginDate" : "03/09/2018",
-		"endDate" : "01/03/2023",
-		"user_id" : "1",
-		"resourceType_id" : "3",
-		"index_id" : "6"
+	    "name" : "Invest 1",
+	    "amountInvested" : 1161.78,
+	    "amountActual" : 1179.09,
+	    "beginDate" : NumberLong(1535925600000),
+	    "endDate" : NumberLong(1677625200000),
+	    "user" : {
+	        "$ref" : "users",
+	        "$id" : ObjectId("5c0a848f26a78ac2962f3f1f")
+	    },
+	    "resourceType" : {
+	        "$ref" : "resourceType",
+	        "$id" : ObjectId("5c0a854726a78ac2962f3f21")
+	    },
+	    "indexId" : "5c0a85c726a78ac2962f3f27",
+	    "indexName" : "Tesouro Selic 2023"
 	},
 	{
-		"_id" : "",
-		"amountInvested" : " 1453.66",
-		"amountActual" : "1473.86",
-		"beginDate" : "10/09/2018",
-		"endDate" : "01/03/2023",
-		"user_id" : "1",
-		"resourceType_id" : "3",
-		"index_id" : "6"
+	    "name" : "Invest 2",
+	    "amountInvested" : 1453.66,
+	    "amountActual" : 1473.86,
+	    "beginDate" : NumberLong(1536530400000),
+	    "endDate" : NumberLong(1677625200000),
+	    "user" : {
+	        "$ref" : "users",
+	        "$id" : ObjectId("5c0a848f26a78ac2962f3f1f")
+	    },
+	    "resourceType" : {
+	        "$ref" : "resourceType",
+	        "$id" : ObjectId("5c0a854726a78ac2962f3f21")
+	    },
+	    "indexId" : "5c0a85c726a78ac2962f3f27",
+	    "indexName" : "Tesouro Selic 2023"
 	},
 	{
-		"_id" : "",
-		"amountInvested" : "1195.25",
-		"amountActual" : "1409.48",
-		"beginDate" : "03/09/2018",
-		"endDate" : "01/01/2025",
-		"user_id" : "1",
-		"resourceType_id" : "4",
-		"index_id" : "7"
+	    "name" : "Invest 3",
+	    "amountInvested" : 1195.25,
+	    "amountActual" : 1409.48,
+	    "beginDate" : NumberLong(1535925600000),
+	    "endDate" : NumberLong(1735686000000),
+	    "user" : {
+	        "$ref" : "users",
+	        "$id" : ObjectId("5c0a848f26a78ac2962f3f1f")
+	    },
+	    "resourceType" : {
+	        "$ref" : "resourceType",
+	        "$id" : ObjectId("5c0a854726a78ac2962f3f22")
+	    },
+	    "indexId" : "5c0a85c726a78ac2962f3f28",
+	    "indexName" : "Tesouro Prefixado 2025",
 	},
 	{
-		"_id" : "",
-		"amountInvested" : "1498.37",
-		"amountActual" : "1751.86",
-		"beginDate" : "10/09/2018",
-		"endDate" : "01/01/2025",
-		"user_id" : "1",
-		"resourceType_id" : "4",
-		"index_id" : "7"
+	    "name" : "Invest 4",
+	    "amountInvested" : "1498.37",
+	    "amountActual" : "1751.86",
+	    "beginDate" : NumberLong(1536530400000),
+	    "endDate" : NumberLong(1735686000000),
+	    "user" : {
+	        "$ref" : "users",
+	        "$id" : ObjectId("5c0a848f26a78ac2962f3f1f")
+	    },
+	    "resourceType" : {
+	        "$ref" : "resourceType",
+	        "$id" : ObjectId("5c0a854726a78ac2962f3f22")
+	    },
+	    "indexId" : "5c0a85c726a78ac2962f3f28",
+	    "indexName" : "Tesouro Prefixado 2025"
 	}
 ]);

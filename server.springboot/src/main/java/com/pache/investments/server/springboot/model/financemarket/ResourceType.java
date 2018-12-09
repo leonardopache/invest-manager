@@ -1,12 +1,16 @@
 package com.pache.investments.server.springboot.model.financemarket;
 
+import java.io.Serializable;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 /**
  * @author lpache
  */
-public class ResourceType {
+public class ResourceType implements Serializable{
+
+	private static final long serialVersionUID = 6459074262421349397L;
 
 	@Id
 	private ObjectId _id;

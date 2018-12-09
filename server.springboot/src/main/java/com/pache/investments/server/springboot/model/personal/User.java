@@ -3,24 +3,36 @@
  */
 package com.pache.investments.server.springboot.model.personal;
 
+import java.io.Serializable;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author lpache
  */
-public class Users {
+@Document(collection="users")
+@TypeAlias("users")
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 6259295013827626054L;
 
 	@Id
 	private ObjectId _id;
 	private String username;
 	private String password;
 	private String name;
-
-	public Users() {
+	
+	public User() {
+	}
+	
+	public User(String _id) {
+		this._id = new ObjectId(_id);
 	}
 
-	public Users(ObjectId _id, String username, String password) {
+	public User(ObjectId _id, String username, String password) {
 		this._id = _id;
 		this.username = username;
 		this.password = password;

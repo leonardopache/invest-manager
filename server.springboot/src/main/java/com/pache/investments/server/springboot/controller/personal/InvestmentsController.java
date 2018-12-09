@@ -16,45 +16,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pache.investments.server.springboot.model.personal.User;
-import com.pache.investments.server.springboot.repository.personal.UserRepository;
+import com.pache.investments.server.springboot.model.personal.Investments;
+import com.pache.investments.server.springboot.repository.personal.InvestmentsRepository;
 
 /**
  * @author lpache
  */
 @RestController
-@RequestMapping("/users")
-public class UsersController {
+@RequestMapping("/investments")
+public class InvestmentsController {
 
 	@Autowired
-	private UserRepository repository;
+	private InvestmentsRepository repository;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public List<User> getAllUsers() {
+	public List<Investments> getAllInvestments() {
 		return repository.findAll();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public User getUserById(@PathVariable("id") ObjectId id) {
-		Optional<User> user = repository.findById(id);
-		return (user.isPresent())? user.get(): null;
+	public Investments getInvestmentsById(@PathVariable("id") ObjectId id) {
+		Optional<Investments> investments = repository.findById(id);
+		return (investments.isPresent())? investments.get(): null;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public void modifyUserById(@PathVariable("id") ObjectId id, @Valid @RequestBody User user) {
-		user.set_id(id);
-		repository.save(user);
+	public void modifyInvestmentsById(@PathVariable("id") ObjectId id, @Valid @RequestBody Investments investments) {
+		investments.set_id(id);
+		repository.save(investments);
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public User createUser(@Valid @RequestBody User user) {
-		user.set_id(ObjectId.get());
-		repository.save(user);
-		return user;
+	public Investments createInvestments(@Valid @RequestBody Investments investments) {
+		investments.set_id(ObjectId.get());
+		repository.save(investments);
+		return investments;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteUser(@PathVariable ObjectId id) {
+	public void deleteInvestments(@PathVariable ObjectId id) {
 		repository.delete(repository.findById(id).get());
 	}
 }
