@@ -1,0 +1,64 @@
+
+{
+	"name": "Invest 1",
+	"amountInvested": 1161.78,
+	"amountActual": 1179.09,
+	"beginDate": "2018-09-03T00:00:00",
+	"endDate": "2023-03-01T00:00:00",
+	"user": {
+		"_id": "5c0a848f26a78ac2962f3f1f"
+	},
+	"resourceType": {
+		"_id": "5c0a854726a78ac2962f3f21"
+	},
+	"indexId": "5c0a85c726a78ac2962f3f27",
+	"indexName": "Tesouro Selic 2023"
+}
+
+{
+	"name": "Invest 2",
+	"amountInvested" : 1453.66,
+	"amountActual" : 1473.86,
+	"beginDate" : "2018-09-10T00:00:00",
+	"endDate" : "2023-03-01T00:00:00",
+	"user" : {
+		"_id" : "5c0a848f26a78ac2962f3f1f"
+	},
+	"resourceType" : {
+		"_id" : "5c0a854726a78ac2962f3f21"
+	},
+	"indexId" : "5c0a85c726a78ac2962f3f27",
+	"indexName" : "Tesouro Selic 2023"
+}
+
+{
+	"name": "Invest 3",
+	"amountInvested" : 1195.25,
+	"amountActual" : 1409.48,
+	"beginDate" : "2018-09-03T00:00:00",
+	"endDate" : "2025-01-01T00:00:00",
+	"user" : {
+		"_id" : "5c0a848f26a78ac2962f3f1f"
+	},
+	"resourceType" : {
+		"_id" : "5c0a854726a78ac2962f3f22"
+	},
+	"indexId" : "5c0a85c726a78ac2962f3f28",
+	"indexName" : "Tesouro Prefixado 2025"
+}
+
+{
+	"name": "Invest 4",
+	"amountInvested" : 1498.37,
+	"amountActual" : 1751.86,
+	"beginDate" : "2018-09-10T00:00:00",
+	"endDate" : "2025-01-01T00:00:00",
+	"user" : {
+		"_id" : "5c0a848f26a78ac2962f3f1f"
+	},
+	"resourceType" : {
+		"_id" : "5c0a854726a78ac2962f3f22"
+	},
+	"indexId" : "5c0a85c726a78ac2962f3f28",
+	"indexName" : "Tesouro Prefixado 2025"
+}
