@@ -24,7 +24,7 @@ import com.pache.investments.server.springboot.repository.PetsRepository;
  */
 @ControllerAdvice
 @RestController
-@RequestMapping("/pets")
+@RequestMapping("/pets/")
 public class PetsController {
 
 	@Autowired
