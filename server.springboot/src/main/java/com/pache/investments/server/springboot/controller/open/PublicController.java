@@ -26,5 +26,12 @@ public class PublicController {
 	public void join(@RequestBody JoinRequest join) {
 		userService.createAccount(join);
 	}
-	
+
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public void login(String user, String password) {
+//	}
+//	
+//	@RequestMapping(value = "/forgot-password", method = RequestMethod.GET)
+//	public void forgotPassword(String mail) {
+//	}
 }
