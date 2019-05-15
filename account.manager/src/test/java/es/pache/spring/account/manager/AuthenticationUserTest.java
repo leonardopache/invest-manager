@@ -13,6 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * All test related with Login and Logout user.
  * 
+ * tutorial: https://www.codementor.io/gtommee97/rest-authentication-with-spring-security-and-mongodb-j8wgh8kg7
+ * 
  * @author lmarquespache
  *
  */
