@@ -21,7 +21,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.MvcResult;
 
 import es.pache.spring.account.manager.controller.requests.RegisterFormRequest;
 
@@ -47,9 +47,10 @@ public class RegisterAccountTest {
 		RegisterFormRequest filled_form = fill_register_form();
 		String body = objectToJson(filled_form);
 
-		ResultActions result = this.mockMvc
+		MvcResult result = this.mockMvc
 				.perform(post("/register-form").contentType(MediaType.APPLICATION_JSON).content(body)).andDo(print())
-				.andExpect(status().isOk());
+				.andExpect(status().isOk()).andReturn();
+//		String response = result.getResponse().getContentAsString();
 	}
 
 	private String objectToJson(Object filled_form) throws IOException, JsonGenerationException, JsonMappingException {
@@ -59,8 +60,8 @@ public class RegisterAccountTest {
 
 	private RegisterFormRequest fill_register_form() {
 		RegisterFormRequest formRequest = new RegisterFormRequest();
-		formRequest.setMail("teste@test.com");
-		formRequest.setName("Unit Tes");
+		formRequest.setEmail("teste@test.com");
+		formRequest.setFirstname("Unit Tes");
 		formRequest.setPassword("MD5password");
 		return formRequest;
 	}

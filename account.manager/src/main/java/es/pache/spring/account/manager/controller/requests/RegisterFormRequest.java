@@ -1,29 +1,41 @@
 package es.pache.spring.account.manager.controller.requests;
+
+import es.pache.spring.account.manager.model.Profile;
+
 /**
- * Request body to register an user in the application. 
+ * Request body to register an user in the application.
  * 
  * @author lmarquespache
  */
 public class RegisterFormRequest {
 
-	private String name;
-	private String mail;
+	private String firstname;
+	private String lastname;
+	private String email;
 	private String password;
 
-	public String getName() {
-		return name;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getMail() {
-		return mail;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -33,5 +45,17 @@ public class RegisterFormRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	public Profile responseToObject() {
+		Profile profile = new Profile();
+		if(getFirstname() != null)
+			profile.setFirstName(getFirstname());
+		if(getLastname() != null)
+			profile.setLastName(getLastname());
+		if(getEmail() != null)
+			profile.setEmail(getEmail());
+		if(getPassword() != null)
+			profile.setPassword(getPassword());
+		return profile;
+	}
 }
