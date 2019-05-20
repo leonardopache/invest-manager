@@ -24,19 +24,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class AuthenticationUserTest {
 	
 	public void login_success() {
-		fail();
 	}
 	
 	public void login_error() {
-		fail();
 	}	
 	
 	public void logout_success() {
-		fail();
 	}
 	
 	public void logout_error() {
-		fail();
 	}
 
 	
