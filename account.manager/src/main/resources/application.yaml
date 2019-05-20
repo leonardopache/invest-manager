@@ -12,7 +12,7 @@ spring:
       appId: 297450741202043
       appSecret: 595008a0075bd8bb44787589c83e40f0
       redirectUri: http://localhost:8090/account-manager/register-facebook
-      scope: email, public_profile, user_place_visits
+      scope: public_profile,user_hometown,user_location,email
 
 #security:
 #    oauth2:

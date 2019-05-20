@@ -14,5 +14,5 @@ https://accounts.google.com/o/oauth2/auth
 &response_mode=fragment
 &state=foobar
 
-https://developers.google.com/identity/protocols/OpenIDConnectç
+https://developers.google.com/identity/protocols/OpenIDConnect
 https://developers.facebook.com/docs/facebook-login/permissions/
