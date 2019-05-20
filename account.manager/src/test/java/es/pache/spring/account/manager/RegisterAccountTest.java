@@ -10,9 +10,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.io.IOException;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +19,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.pache.spring.account.manager.controller.requests.RegisterFormRequest;
 
@@ -50,7 +51,6 @@ public class RegisterAccountTest {
 		MvcResult result = this.mockMvc
 				.perform(post("/register-form").contentType(MediaType.APPLICATION_JSON).content(body)).andDo(print())
 				.andExpect(status().isOk()).andReturn();
-//		String response = result.getResponse().getContentAsString();
 	}
 
 	private String objectToJson(Object filled_form) throws IOException, JsonGenerationException, JsonMappingException {
@@ -67,11 +67,9 @@ public class RegisterAccountTest {
 	}
 
 	public void create_new_account_by_google() {
-		fail();
 	}
 
 	public void create_new_account_by_fb() {
-		fail();
 	}
 
 	// TODO[register] test to register errors.

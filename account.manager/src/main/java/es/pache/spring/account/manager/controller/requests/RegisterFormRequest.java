@@ -10,7 +10,6 @@ import es.pache.spring.account.manager.model.Profile;
 public class RegisterFormRequest {
 
 	private String firstname;
-	private String lastname;
 	private String email;
 	private String password;
 
@@ -20,14 +19,6 @@ public class RegisterFormRequest {
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
 	}
 
 	public String getEmail() {
@@ -50,8 +41,6 @@ public class RegisterFormRequest {
 		Profile profile = new Profile();
 		if(getFirstname() != null)
 			profile.setFirstName(getFirstname());
-		if(getLastname() != null)
-			profile.setLastName(getLastname());
 		if(getEmail() != null)
 			profile.setEmail(getEmail());
 		if(getPassword() != null)
