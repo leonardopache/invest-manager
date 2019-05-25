@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Demo</title>
+<title>Our Social Media</title>
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width" />
 <base href="/" />
@@ -18,9 +18,10 @@
 
 <style>
 body {
-	padding-top: 4.2rem;
+	padding-top: 2.2rem;
 	padding-bottom: 4.2rem;
 	background: rgba(0, 0, 0, 0.76);
+	padding-bottom: 4.2rem;
 }
 
 a {
@@ -28,28 +29,25 @@ a {
 }
 
 .myform {
-	position: relative;
-	display: -ms-flexbox;
-	display: flex;
-	padding: 1rem;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	width: 90%;
-	pointer-events: auto;
+	padding: 2rem;
 	background-color: #fff;
-	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, .2);
 	border-radius: 1.1rem;
-	outline: 0;
-	max-width: 500px;
+	max-width: 350px;
+	min-width: 350px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
 }
 
 .tx-tfm {
 	text-transform: uppercase;
 }
 
-.mybtn {
-	border-radius: 50px;
+.ico-small {
+	width: 24px;
+	height: 24px;
+	margin: 20px;
 }
 
 .login-or {
@@ -65,16 +63,18 @@ a {
 	display: block;
 	position: absolute;
 	left: 50%;
+    transform: translate(-50%);
 	top: -2px;
-	margin-left: -25px;
 	background-color: #fff;
-	width: 50px;
+	width: 200px;
 	text-align: center;
 }
+
 .span-login {
 	display: block;
 	position: absolute;
-	left: 25%;
+	left: 50%;
+    transform: translate(-50%);
 	top: -2px;
 	background-color: #fff;
 	width: 200px;
@@ -87,118 +87,105 @@ a {
 	margin-bottom: 0px !important;
 }
 
-.google {
-	color: #666;
+.social-register {
 	width: 100%;
-	height: 40px;
+	height: 60px;
 	text-align: center;
-	outline: none;
-	border: 1px solid lightgrey;
 }
 
-form .error {
-	color: #ff0000;
-}
 </style>
 <script type="text/javascript">
-function submitform(){
-    var formData = JSON.stringify($("#registration").serializeArray());
-    
-    $.ajax({
-    	  type: "POST",
-    	  url: "/account-manager/register-form",
-    	  data: formData,
-    	  success: function(){},
-    	  dataType: "json",
-    	  contentType : "application/json"
-    	});
-}
+	function submitform() {
+		var formData = JSON.stringify($("#registration").serializeArray());
+
+		$.ajax({
+			type : "POST",
+			url : "/account-manager/register-form",
+			data : formData,
+			success : function() {
+			},
+			dataType : "json",
+			contentType : "application/json"
+		});
+	}
 </script>
 <body>
-	<h1>Account Manager API</h1>
-
-	<div class="row">
-		<div class="col-md-5 mx-auto">
-			<div id="login">
-				<div class="myform form ">
-					<div class="logo mb-3">
-						<div class="col-md-12 text-center">
-							<h1>Signup</h1>
-						</div>
-					</div>
-					<form id="registration" method="post">
-						<div class="form-group">
-							<label for="exampleInputEmail1">First Name</label> <input
-								type="text" name="firstname" class="form-control" id="firstname"
-								aria-describedby="emailHelp" placeholder="Enter Firstname">
-						</div>
-						
-						<div class="form-group">
-							<label for="exampleInputEmail1">Email address</label> <input
-								type="email" name="email" class="form-control" id="email"
-								aria-describedby="emailHelp" placeholder="Enter email">
-						</div>
-						
-						<div class="form-group">
-							<label for="exampleInputEmail1">Password</label> <input
-								type="password" name="password" id="password"
-								class="form-control" aria-describedby="emailHelp"
-								placeholder="Enter Password">
-						</div>
-						<div class="col-md-12 text-center mb-3">
-							<input type="submit" value="Register" onclick="submitform()"
-								class=" btn btn-block mybtn btn-primary tx-tfm" />
-						</div>
-					</form>
-					<div class="col-md-12 ">
-						<div class="login-or">
-							<hr class="hr-or">
-							<span class="span-or">or</span>
-						</div>
-					</div>
-					<div class="col-md-12 mb-3">
-						<p class="text-center">
-							<a href="/account-manager/register-google"
-								class="google btn mybtn"><i class="fa fa-google-plus"> </i>
-								Signup using Google </a>
-						</p>
-					</div>
-
-					<div class="col-md-12 ">
-						<div class="login-or">
-							<hr class="hr-or">
-							<span class="span-login">Already have an account?</span>
-						</div>
-					</div>
-					<div class="logo mb-3">
-						<div class="col-md-12 text-center">
-							<h1>Login</h1>
-						</div>
-					</div>
-					<form action="/account-manager/login-form" method="post"
-						name="login">
-						<div class="form-group">
-							<label for="exampleInputEmail1">Email address</label> <input
-								type="email" name="email" class="form-control" id="email"
-								aria-describedby="emailHelp" placeholder="Enter email">
-						</div>
-						<div class="form-group">
-							<label for="exampleInputEmail1">Password</label> <input
-								type="password" name="password" id="password"
-								class="form-control" aria-describedby="emailHelp"
-								placeholder="Enter Password">
-						</div>
-
-						<div class="col-md-12 text-center ">
-							<button type="submit"
-								class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
-						</div>
-					</form>
-
-
-				</div>
+	<div class="myform form ">
+		<div class="logo mb-3">
+			<div class="col-md-12 text-center">
+				<h1>Signup</h1>
 			</div>
 		</div>
+		<form id="registration" method="post">
+			<div class="form-group">
+				<label for="exampleInputEmail1">First Name</label> <input
+					type="text" name="firstName" class="form-control" id="firstName"
+					aria-describedby="emailHelp" placeholder="Enter Firstname">
+			</div>
+
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email address</label> <input
+					type="email" name="email" class="form-control" id="email"
+					aria-describedby="emailHelp" placeholder="Enter email">
+			</div>
+
+			<div class="form-group">
+				<label for="exampleInputEmail1">Password</label> <input
+					type="password" name="password" id="password" class="form-control"
+					aria-describedby="emailHelp" placeholder="Enter Password">
+			</div>
+			<div class="col-md-12 text-center mb-3">
+				<input type="submit" value="Register" onclick="submitform()"
+					class=" btn btn-block mybtn btn-primary tx-tfm" />
+			</div>
+		</form>
+		<div class="col-md-12 ">
+			<div class="login-or">
+				<hr class="hr-or">
+				<span class="span-or">or register with:</span>
+			</div>
+		</div>
+		<div class="col-md-12 mb-3">
+			<p class="social-register">
+				<a href="/account-manager/googleAutho" >
+					<img alt="" src="/account-manager/img/google-g-logo.svg" class="ico-small"/>
+				</a>
+				<a href="/account-manager/fbAutho" >
+					<img alt="" src="/account-manager/img/fb-f-logo.svg" class="ico-small"/>
+				</a>
+			</p>
+		</div>
+
+		<div class="col-md-12 ">
+			<div class="login-or">
+				<hr class="hr-or">
+				<span class="span-login">Already have an account?</span>
+			</div>
+		</div>
+		<div class="logo mb-3">
+			<div class="col-md-12 text-center">
+				<h1>Login</h1>
+			</div>
+		</div>
+		<form action="/account-manager/login-form" method="post" name="login">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email address</label> <input
+					type="email" name="email" class="form-control" id="email"
+					aria-describedby="emailHelp" placeholder="Enter email">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Password</label> <input
+					type="password" name="password" id="password" class="form-control"
+					aria-describedby="emailHelp" placeholder="Enter Password">
+			</div>
+
+			<div class="col-md-12 text-center ">
+				<button type="submit"
+					class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+			</div>
+		</form>
+
+
 	</div>
 
 </body>

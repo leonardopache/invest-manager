@@ -9,16 +9,16 @@ import es.pache.spring.account.manager.model.Profile;
  */
 public class RegisterFormRequest {
 
-	private String firstname;
+	private String firstName;
 	private String email;
 	private String password;
 
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getEmail() {
@@ -36,14 +36,14 @@ public class RegisterFormRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public Profile responseToObject() {
 		Profile profile = new Profile();
-		if(getFirstname() != null)
-			profile.setFirstName(getFirstname());
-		if(getEmail() != null)
+		if (getFirstName() != null)
+			profile.setFirstName(getFirstName());
+		if (getEmail() != null)
 			profile.setEmail(getEmail());
-		if(getPassword() != null)
+		if (getPassword() != null)
 			profile.setPassword(getPassword());
 		return profile;
 	}
