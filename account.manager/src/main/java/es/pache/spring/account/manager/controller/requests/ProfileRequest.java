@@ -1,21 +1,19 @@
-package es.pache.spring.account.manager.model;
+package es.pache.spring.account.manager.controller.requests;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.modelmapper.ModelMapper;
+
+import es.pache.spring.account.manager.model.Profile;
 
 /**
- * Profile information
+ * request profile representation.
  * 
  * @author lmarquespache
  */
-@Document
-public class Profile {
-
+public class ProfileRequest {
 
 	private String firstName;
 	private String midleName;
 	private String lastName;
-	@Id
 	private String email;
 	private String password;
 	private String avatar;
@@ -103,6 +101,11 @@ public class Profile {
 
 	public void setLanguages(String languages) {
 		this.languages = languages;
+	}
+
+	public Profile responseToObject() {
+		ModelMapper mapper = new ModelMapper();
+		return mapper.map(this, Profile.class);
 	}
 
 }

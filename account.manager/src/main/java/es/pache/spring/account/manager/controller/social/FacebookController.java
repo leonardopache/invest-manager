@@ -5,13 +5,12 @@ package es.pache.spring.account.manager.controller.social;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import es.pache.spring.account.manager.controller.AbstractRegisterAccount;
 import es.pache.spring.account.manager.controller.response.ProfileResponse;
-import es.pache.spring.account.manager.controller.social.response.SocialProfileResponse;
 import es.pache.spring.account.manager.services.social.FacebookService;
 import es.pache.spring.account.manager.services.social.SocialService;
 
@@ -23,18 +22,19 @@ import es.pache.spring.account.manager.services.social.SocialService;
  *
  */
 @RestController
-public class FacebookController extends AbstractRegisterAccount {
+public class FacebookController extends AbstractSocialRegisterAccount {
 
 	@Autowired
 	protected FacebookService fbService;
 
 	@Override
-	@RequestMapping(value = "/fbAutho")
+	@RequestMapping(method = { RequestMethod.GET }, value = "/fbAutho")
 	public ModelAndView createRegisterInformation() {
 		return super.createRegisterInformation();
 	}
 
-	@RequestMapping(value = "/register-facebook")
+	@Override
+	@RequestMapping(method = { RequestMethod.GET }, value = "/register-facebook")
 	public ProfileResponse registerWith(@RequestParam("code") String code) {
 		return super.registerWith(code);
 	}

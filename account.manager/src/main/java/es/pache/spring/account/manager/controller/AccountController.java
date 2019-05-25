@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import es.pache.spring.account.manager.controller.requests.ProfileRequest;
 import es.pache.spring.account.manager.controller.requests.RegisterFormRequest;
 import es.pache.spring.account.manager.controller.response.ProfileResponse;
 import es.pache.spring.account.manager.model.Profile;
@@ -27,16 +28,16 @@ public class AccountController {
 	@Autowired
 	protected ProfileRepository profileRepository;
 
-	// @RequestMapping(value = "/home")
-	// public String home(OAuth2Authentication authentication) {
-	// LinkedHashMap<String, String> details = (LinkedHashMap<String, String>)
-	// authentication.getUserAuthentication().getDetails();
-	// return details.toString();
-	// }
-
 	@RequestMapping(method = { RequestMethod.POST }, value = "/register-form")
 	public @ResponseBody ProfileResponse registerForm(@RequestBody RegisterFormRequest registerForm) {
 		Profile p = registerForm.responseToObject();
+		p = profileRepository.save(p);
+		return ProfileResponse.toResponse(p);
+	}
+	
+	@RequestMapping(method = { RequestMethod.POST }, value = "/complete-register")
+	public @ResponseBody ProfileResponse completeRegisterForm(@RequestBody ProfileRequest profileRequest) {
+		Profile p = profileRequest.responseToObject();
 		p = profileRepository.save(p);
 		return ProfileResponse.toResponse(p);
 	}

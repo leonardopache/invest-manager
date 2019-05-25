@@ -3,6 +3,8 @@
  */
 package es.pache.spring.account.manager.controller.response;
 
+import org.modelmapper.ModelMapper;
+
 import es.pache.spring.account.manager.model.Profile;
 
 /**
@@ -16,13 +18,6 @@ public class ProfileResponse {
 	private String lastName;
 	private String email;
 	private String avatar;
-	
-	public ProfileResponse(String firstName, String lastName, String email, String avatar) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.avatar = avatar;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -57,7 +52,8 @@ public class ProfileResponse {
 	}
 
 	public static ProfileResponse toResponse(Profile p) {
-		return new ProfileResponse(p.getFirstName(), p.getLastName(), p.getEmail(), p.getAvatar());
+		ModelMapper mapper = new ModelMapper();
+		return mapper.map(p, ProfileResponse.class);
 	}
 
 }
