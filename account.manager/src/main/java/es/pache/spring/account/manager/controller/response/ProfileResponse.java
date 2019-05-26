@@ -56,4 +56,10 @@ public class ProfileResponse {
 		return mapper.map(p, ProfileResponse.class);
 	}
 
+	@Override
+	public String toString() {
+		return "ProfileResponse [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", avatar="
+				+ avatar + "]";
+	}
+
 }
