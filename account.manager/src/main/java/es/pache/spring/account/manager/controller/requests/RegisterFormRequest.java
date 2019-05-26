@@ -12,6 +12,18 @@ public class RegisterFormRequest {
 	private String firstName;
 	private String email;
 	private String password;
+	
+	public RegisterFormRequest() {
+		// TODO Auto-generated constructor stub
+	}
+	
+
+	public RegisterFormRequest(String firstName, String email, String password) {
+		this.firstName = firstName;
+		this.email = email;
+		this.password = password;
+	}
+
 
 	public String getFirstName() {
 		return firstName;

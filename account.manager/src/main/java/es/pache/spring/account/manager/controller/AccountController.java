@@ -29,12 +29,13 @@ public class AccountController {
 	protected ProfileRepository profileRepository;
 
 	@RequestMapping(method = { RequestMethod.POST }, value = "/register-form")
-	public @ResponseBody ProfileResponse registerForm(@RequestBody RegisterFormRequest registerForm) {
+	public String registerForm(@RequestBody RegisterFormRequest registerForm) {
 		Profile p = registerForm.responseToObject();
 		p = profileRepository.save(p);
-		return ProfileResponse.toResponse(p);
+		System.out.println("===============================> " + ProfileResponse.toResponse(p));
+		return "redirect:/complete-form.html";
 	}
-	
+
 	@RequestMapping(method = { RequestMethod.POST }, value = "/complete-register")
 	public @ResponseBody ProfileResponse completeRegisterForm(@RequestBody ProfileRequest profileRequest) {
 		Profile p = profileRequest.responseToObject();
