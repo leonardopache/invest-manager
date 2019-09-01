@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Our Social Media</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/account-manager/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript"
+	src="/account-manager/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/account-manager/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+
+<style>
+body {
+	padding-top: 2.2rem;
+	padding-bottom: 4.2rem;
+	background: rgba(0, 0, 0, 0.76);
+	padding-bottom: 4.2rem;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+.myform {
+	padding: 2rem;
+	background-color: #fff;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 1.1rem;
+	max-width: 350px;
+	min-width: 350px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+}
+
+.tx-tfm {
+	text-transform: uppercase;
+}
+
+.ico-small {
+	width: 24px;
+	height: 24px;
+	margin: 20px;
+}
+
+.login-or {
+	position: relative;
+	color: #aaa;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.span-or {
+	display: block;
+	position: absolute;
+	left: 50%;
+    transform: translate(-50%);
+	top: -2px;
+	background-color: #fff;
+	width: 200px;
+	text-align: center;
+}
+
+.span-login {
+	display: block;
+	position: absolute;
+	left: 50%;
+    transform: translate(-50%);
+	top: -2px;
+	background-color: #fff;
+	width: 200px;
+	text-align: center;
+}
+
+.hr-or {
+	height: 1px;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+.social-register {
+	width: 100%;
+	height: 60px;
+	text-align: center;
+}
+
+</style>
+<script type="text/javascript">
+	function submitform() {
+		var formData = JSON.stringify($("#registration").serializeArray());
+
+		$.ajax({
+			type : "POST",
+			url : "/account-manager/register-form",
+			data : formData,
+			success : function() {
+			},
+			dataType : "json",
+			contentType : "application/json"
+		});
+	}
+</script>
+<body>
+	<div class="myform form ">
+		<div class="logo mb-3">
+			<div class="col-md-12 text-center">
+				<h1>Complete Form</h1>
+			</div>
+		</div>
+		<form id="registration" method="post">
+			<div class="form-group">
+				<label for="exampleInputEmail1">First Name</label> <input
+					type="text" name="firstName" class="form-control" id="firstName"
+					aria-describedby="emailHelp" placeholder="Enter Firstname">
+			</div>
+
+			<div class="form-group">
+				<label for="exampleInputEmail1">Email address</label> <input
+					type="email" name="email" class="form-control" id="email"
+					aria-describedby="emailHelp" placeholder="Enter email">
+			</div>
+
+			<div class="form-group">
+				<label for="exampleInputEmail1">Password</label> <input
+					type="password" name="password" id="password" class="form-control"
+					aria-describedby="emailHelp" placeholder="Enter Password">
+			</div>
+			<div class="col-md-12 text-center mb-3">
+				<input type="submit" value="Register" onclick="submitform()"
+					class=" btn btn-block mybtn btn-primary tx-tfm" />
+			</div>
+		</form>
+
+	</div>
+
+</body>
+</html>

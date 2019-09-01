@@ -1,0 +1,24 @@
+logging.level.org.springframework.web: TRACE
+
+server:
+  port: 8090
+  servlet.contextPath: /account-manager
+
+
+spring:
+  data.mongodb:
+    uri: mongodb+srv://mongdb_usr:pwd003@mongo-free-okouq.mongodb.net/test?retryWrites=true
+    database: account-profile
+    
+  social:
+    facebook:
+      appId: 297450741202043
+      appSecret: 595008a0075bd8bb44787589c83e40f0
+      redirectUri: http://localhost:8090/account-manager/register-facebook
+      scope: public_profile,email
+      
+    google:
+      clientId: 552727314715-a1de6sau4v2375cbtpgr7tgq6b8so92l.apps.googleusercontent.com
+      clientSecret: 8Z3kWArI-_f2N7H6v0szTJLc
+      redirectUri: http://localhost:8090/account-manager/register-google
+      scope: profile email

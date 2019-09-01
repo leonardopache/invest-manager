@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.4.RELEASE</version>
+		<relativePath />
+		<!-- lookup parent from repository -->
+	</parent>
+	<groupId>es.pache.spring</groupId>
+	<artifactId>account.manager</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>account.manager</name>
+	<description>API account manager</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<resource.delimiter>^</resource.delimiter>
+		<artifactory.ip>localhost</artifactory.ip> <!-- 10.99.30.227 | 192.168.43.28 -->
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!-- web dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- data dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
+		<!-- security dependency -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-security</artifactId> -->
+		<!-- <exclusions> -->
+		<!-- <exclusion> -->
+		<!-- <artifactId>spring-security-oauth2-autoconfigure</artifactId> -->
+		<!-- </exclusion> -->
+		<!-- </exclusions> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.security.oauth.boot</groupId> -->
+		<!-- <artifactId>spring-security-oauth2-autoconfigure</artifactId> -->
+		<!-- <version> 2.1.4.RELEASE</version> -->
+		<!-- </dependency> -->
+
+		<!-- Social dependency -->
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-facebook -->
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-facebook</artifactId>
+			<version>3.0.0.M3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-google -->
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-google</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-core</artifactId>
+			<version>2.0.0.M2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-config</artifactId>
+			<version>2.0.0.M2</version>
+		</dependency>
+
+		<!-- others -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+		<!-- JWT library -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.5.1</version>
+		</dependency>
+
+		<!-- JS/css dependency -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator-core</artifactId>
+		</dependency>
+
+		<!-- Test dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<profiles>
+		<profile>
+			<repositories>
+				<repository>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<id>central</id>
+					<name>libs-release</name>
+					<url>http://${artifactory.ip}:8081/artifactory/libs-release</url>
+				</repository>
+				<repository>
+					<snapshots />
+					<id>snapshots</id>
+					<name>libs-snapshot</name>
+					<url>http://${artifactory.ip}:8081/artifactory/libs-snapshot</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<id>central</id>
+					<name>libs-release</name>
+					<url>http://${artifactory.ip}:8081/artifactory/libs-release</url>
+				</pluginRepository>
+				<pluginRepository>
+					<snapshots />
+					<id>snapshots</id>
+					<name>libs-snapshot</name>
+					<url>http://${artifactory.ip}:8081/artifactory/libs-snapshot</url>
+				</pluginRepository>
+			</pluginRepositories>
+			<id>artifactory</id>
+		</profile>
+	</profiles>
+</project>
